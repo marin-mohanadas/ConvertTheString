@@ -1,0 +1,42 @@
+﻿@using ConvertTheString.Models;
+
+@model IEnumerable<tblEmployee>
+
+@{
+    ViewBag.Title = "Employees";
+}
+
+<h2>Employees</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("First Name", "Index", new { sortBy = ViewBag.SortFirstName, locationId = ViewBag.LocationID })
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Index", new { sortBy = ViewBag.SortLastName, locationId = ViewBag.LocationID })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblLocation.location)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tblLocation.location)
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+@Html.ActionLink("Back to list", "Index", "Home")
